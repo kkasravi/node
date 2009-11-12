@@ -218,14 +218,12 @@ Handle<Value> ExecuteString(v8::Handle<v8::String> source,
 
   Handle<Script> script = Script::Compile(source, filename);
   if (script.IsEmpty()) {
-    ReportException(&try_catch);
-    exit(1);
+    FatalException(try_catch);
   }
 
   Handle<Value> result = script->Run();
   if (result.IsEmpty()) {
-    ReportException(&try_catch);
-    exit(1);
+    FatalException(try_catch);
   }
 
   return scope.Close(result);
@@ -578,8 +576,7 @@ static void ExecuteNativeJS(const char *filename, const char *data) {
   if (try_catch.HasCaught())  {
     puts("There is an error in Node's built-in javascript");
     puts("This should be reported as a bug!");
-    ReportException(&try_catch);
-    exit(1);
+    FatalException(try_catch);
   }
 }
 
