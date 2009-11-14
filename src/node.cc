@@ -36,6 +36,8 @@ static Persistent<Object> process;
 static int dash_dash_index = 0;
 static bool use_debug_agent = false;
 
+static int uncaught_exception_counter = 0;
+
 enum encoding ParseEncoding(Handle<Value> encoding_v, enum encoding _default) {
   HandleScope scope;
 
@@ -523,8 +525,46 @@ static void OnFatalError(const char* location, const char* message) {
 }
 
 void FatalException(TryCatch &try_catch) {
-  ReportException(&try_catch);
-  exit(1);
+  // Check if uncaught_exception_counter indicates a recursion
+  if (uncaught_exception_counter >= 1) {
+    ReportException(&try_catch);
+    exit(1);
+  }
+  uncaught_exception_counter++;
+
+  HandleScope scope;
+
+  Local<Value> listeners_v = process->Get(String::NewSymbol("listeners"));
+  assert(listeners_v->IsFunction());
+
+  Local<Function> listeners = Local<Function>::Cast(listeners_v);
+
+  Local<Value> argv[1] = { String::NewSymbol("uncaughtException") };
+  Local<Value> ret = listeners->Call(process, 1, argv);
+
+  assert(ret->IsArray());
+
+  Local<Array> listener_array = Local<Array>::Cast(ret);
+
+  uint32_t length = listener_array->Length();
+  // Report and exit if process has no "uncaughtException" listener
+  if (length == 0) {
+    ReportException(&try_catch);
+    exit(1);
+  }
+
+  // Otherwise fire the process "uncaughtException" event
+  Local<Value> emit_v = process->Get(String::NewSymbol("emit"));
+  assert(emit_v->IsFunction());
+
+  Local<Function> emit = Local<Function>::Cast(emit_v);
+
+  Local<Value> error = try_catch.Exception();
+  Local<Value> event_argv[2] = { String::New("uncaughtException"), error };
+  emit->Call(process, 2, event_argv);
+
+  // Decrement so we know if the next exception is a recursion or not
+  uncaught_exception_counter--;
 }
 
 static ev_async eio_watcher;
