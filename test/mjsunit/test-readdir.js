@@ -16,6 +16,6 @@ promise.addErrback(function () {
 });
 
 process.addListener("exit", function () {
-  assertFalse(got_error);
+  assert.equal(false, got_error);
   puts("exit");
 });

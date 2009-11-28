@@ -18,7 +18,7 @@ var server = tcp.createServer(function (socket) {
 
   socket.addListener("close", function (had_error) {
     //puts("server had_error: " + JSON.stringify(had_error));
-    assertFalse(had_error);
+    assert.equal(false, had_error);
   });
 });
 server.listen(port);
@@ -40,7 +40,7 @@ client.addListener("receive", function (chunk) {
 
 client.addListener("close", function (had_error) {
   puts("disconnect");
-  assertFalse(had_error);
+  assert.equal(false, had_error);
   if (disconnect_count++ < N)
     client.connect(port); // reconnect
   else

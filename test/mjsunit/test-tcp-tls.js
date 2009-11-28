@@ -41,7 +41,7 @@ function tlsTest (port, host, caPem, keyPem, certPem) {
     });
 
     socket.addListener("close", function (had_error) {
-      assertFalse(had_error);
+      assert.equal(false, had_error);
       assertEquals("closed", socket.readyState);
       socket.server.close();
     });

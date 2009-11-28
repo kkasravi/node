@@ -26,7 +26,7 @@ function pingPongTest (port, host, on_complete) {
 
     socket.addListener("timeout", function () {
       debug("server-side timeout!!");
-      assertFalse(true);
+      assert.equal(false, true);
     });
 
     socket.addListener("eof", function () {
@@ -37,7 +37,7 @@ function pingPongTest (port, host, on_complete) {
 
     socket.addListener("close", function (had_error) {
       puts("server-side socket close");
-      assertFalse(had_error);
+      assert.equal(false, had_error);
       assertEquals("closed", socket.readyState);
       socket.server.close();
     });
@@ -72,7 +72,7 @@ function pingPongTest (port, host, on_complete) {
 
   client.addListener("timeout", function () {
     debug("client-side timeout!!");
-    assertFalse(true);
+    assert.equal(false, true);
   });
 
   client.addListener("close", function () {

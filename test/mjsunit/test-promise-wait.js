@@ -47,25 +47,25 @@ p5.addCallback(function () {
 
 p2.emitSuccess();
 
-assertFalse(p1_done);
+assert.equal(false, p1_done);
 assertTrue(p2_done);
-assertFalse(p3_done);
+assert.equal(false, p3_done);
 
 var ret1 = p1.wait()
 assertEquals("single arg", ret1);
 
 assertTrue(p1_done);
 assertTrue(p2_done);
-assertFalse(p3_done);
+assert.equal(false, p3_done);
 
 p3.emitSuccess();
 
-assertFalse(p4_done);
-assertFalse(p5_done);
+assert.equal(false, p4_done);
+assert.equal(false, p5_done);
 
 p5.emitSuccess();
 
-assertFalse(p4_done);
+assert.equal(false, p4_done);
 assertTrue(p5_done);
 
 var ret4 = p4.wait();

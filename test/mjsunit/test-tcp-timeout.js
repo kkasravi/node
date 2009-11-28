@@ -54,7 +54,7 @@ client.addListener("receive", function (chunk) {
 
 client.addListener("timeout", function () {
   puts("client timeout - this shouldn't happen");
-  assertFalse(true);
+  assert.equal(false, true);
 });
 
 client.addListener("eof", function () {
@@ -65,7 +65,7 @@ client.addListener("eof", function () {
 client.addListener("close", function (had_error) {
   puts("client disconnect");
   echo_server.close();
-  assertFalse(had_error);
+  assert.equal(false, had_error);
 });
 
 process.addListener("exit", function () {

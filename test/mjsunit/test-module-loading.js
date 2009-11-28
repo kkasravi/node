@@ -10,7 +10,7 @@ var d3 = require(require('path').dirname(__filename)+"/fixtures/b/d");
 // Relative
 var d4 = require("../mjsunit/fixtures/b/d");
 
-assertFalse(false, "testing the test program.");
+assert.equal(false, false, "testing the test program.");
 
 assertInstanceof(a.A, Function);
 assertEquals("A", a.A());

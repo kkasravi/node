@@ -36,7 +36,7 @@ function pingPongTest (port, host, on_complete) {
     });
 
     socket.addListener("close", function (had_error) {
-      assertFalse(had_error);
+      assert.equal(false, had_error);
       assertEquals("closed", socket.readyState);
       socket.server.close();
     });

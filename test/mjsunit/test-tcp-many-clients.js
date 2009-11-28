@@ -45,7 +45,7 @@ function runClient (callback) {
 
   client.addListener("close", function (had_error) {
     print(".");
-    assertFalse(had_error);
+    assert.equal(false, had_error);
     assertEquals(bytes, client.recved.length);
     if (this.connections < connections_per_client) {
       this.connect(port);
