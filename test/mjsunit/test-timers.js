@@ -42,5 +42,5 @@ setInterval(function () {
 
 process.addListener("exit", function () {
   assertTrue(setTimeout_called);
-  assertEquals(3, interval_count);
+  assert.equal(3, interval_count);
 });

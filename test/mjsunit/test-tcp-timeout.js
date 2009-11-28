@@ -37,7 +37,7 @@ client.addListener("connect", function () {
 });
 
 client.addListener("receive", function (chunk) {
-  assertEquals("hello\r\n", chunk);
+  assert.equal("hello\r\n", chunk);
   if (exchanges++ < 5) {
     setTimeout(function () {
       puts("client send 'hello'");

@@ -13,8 +13,8 @@ e.addListener("newListener", function (event, listener) {
 e.addListener("hello", function (a, b) {
   puts("hello");
   times_hello_emited += 1
-  assertEquals("a", a);
-  assertEquals("b", b);
+  assert.equal("a", a);
+  assert.equal("b", b);
 });
 
 puts("start");
@@ -23,7 +23,7 @@ e.emit("hello", "a", "b");
 
 process.addListener("exit", function () {
   assertArrayEquals(["hello"], events_new_listener_emited);
-  assertEquals(1, times_hello_emited);
+  assert.equal(1, times_hello_emited);
 });
 
 

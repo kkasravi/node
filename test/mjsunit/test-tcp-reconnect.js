@@ -34,7 +34,7 @@ client.addListener("connect", function () {
 client.addListener("receive", function (chunk) {
   client_recv_count += 1;
   puts("client_recv_count " + client_recv_count);
-  assertEquals("hello\r\n", chunk);
+  assert.equal("hello\r\n", chunk);
   client.close();
 });
 
@@ -48,6 +48,6 @@ client.addListener("close", function (had_error) {
 });
 
 process.addListener("exit", function () {
-  assertEquals(N+1, disconnect_count);
-  assertEquals(N+1, client_recv_count);
+  assert.equal(N+1, disconnect_count);
+  assert.equal(N+1, client_recv_count);
 });

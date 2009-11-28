@@ -48,7 +48,7 @@ runAb("-k -c 100 -t 2", function (reqSec, keepAliveRequests) {
 
   runAb("-c 100 -t 2", function (reqSec, keepAliveRequests) {
     normalReqSec = reqSec;
-    assertEquals(0, keepAliveRequests);
+    assert.equal(0, keepAliveRequests);
     puts("normal: " + normalReqSec + " req/sec");
     server.close();
   });

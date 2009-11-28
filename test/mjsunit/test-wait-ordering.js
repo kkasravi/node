@@ -20,7 +20,7 @@ function test_timeout_order(delay, desired_order) {
     // A stronger assertion would be that the ordering is correct.
     // With Poor Man's coroutines we cannot guarentee that.
     // Replacing wait() with actual coroutines would solve that issue.
-    // assertEquals(desired_order, order);
+    // assert.equal(desired_order, order);
   });
 }
 test_timeout_order(10, 6); // Why does this have the proper order??

@@ -20,7 +20,7 @@ var bad_server_got_error = false;
 http.cat("http://localhost:"+PORT+"/", "utf8").addCallback(function (content) {
   puts("got response");
   got_good_server_content = true;
-  assertEquals(body, content);
+  assert.equal(body, content);
   server.close();
 });
 

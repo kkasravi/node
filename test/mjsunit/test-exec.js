@@ -23,7 +23,7 @@ exec("ls /DOES_NOT_EXIST").addCallback(function (out) {
 }).addErrback(function (code, out, err) {
   error_count++;
 
-  assertEquals("", out);
+  assert.equal("", out);
   assertTrue(code != 0);
 
   puts("error!: " + code);
@@ -33,6 +33,6 @@ exec("ls /DOES_NOT_EXIST").addCallback(function (out) {
 
 
 process.addListener("exit", function () {
-  assertEquals(1, success_count);
-  assertEquals(1, error_count);
+  assert.equal(1, success_count);
+  assert.equal(1, error_count);
 });

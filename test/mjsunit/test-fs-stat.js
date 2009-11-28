@@ -47,7 +47,7 @@ posix.stat(__filename).addCallback(function (s) {
 
 
 process.addListener("exit", function () {
-  assertEquals(2, success_count);
+  assert.equal(2, success_count);
   assert.equal(false, got_error);
   assertTrue(stats.mtime instanceof Date);
 });

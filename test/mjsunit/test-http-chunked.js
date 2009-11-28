@@ -13,7 +13,7 @@ server.listen(PORT);
 
 http.cat("http://localhost:"+PORT+"/", "utf8")
   .addCallback(function (data) {
-    assertEquals(UTF8_STRING, data);
+    assert.equal(UTF8_STRING, data);
     server.close();
   })
   .addErrback(function() {
