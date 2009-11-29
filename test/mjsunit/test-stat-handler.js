@@ -24,5 +24,5 @@ file.close().wait();
 
 
 process.addListener("exit", function () {
-  assertTrue(changes > 0);
+  assert.equal(true, changes > 0);
 });

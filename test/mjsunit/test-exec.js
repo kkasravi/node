@@ -18,13 +18,13 @@ exec("ls /").addCallback(function (out) {
 exec("ls /DOES_NOT_EXIST").addCallback(function (out) {
   success_count++;
   p(out);
-  assertTrue(out != "");
+  assert.equal(true, out != "");
 
 }).addErrback(function (code, out, err) {
   error_count++;
 
   assert.equal("", out);
-  assertTrue(code != 0);
+  assert.equal(true, code != 0);
 
   puts("error!: " + code);
   puts("stdout: " + JSON.stringify(out));

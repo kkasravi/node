@@ -13,10 +13,10 @@ http.createServer(function (req, res) {
     assert.equal("/hello", req.uri.path);
 
     p(req.headers);
-    assertTrue("accept" in req.headers);
+    assert.equal(true, "accept" in req.headers);
     assert.equal("*/*", req.headers["accept"]);
 
-    assertTrue("foo" in req.headers);
+    assert.equal(true, "foo" in req.headers);
     assert.equal("bar", req.headers["foo"]);
   }
 

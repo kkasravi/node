@@ -17,7 +17,7 @@ function pingPongTest (port, host, on_complete) {
       puts(data);
       assert.equal("PING", data);
       assert.equal("open", socket.readyState);
-      assertTrue(count <= N);
+      assert.equal(true, count <= N);
       setTimeout(function () {
         assert.equal("open", socket.readyState);
         socket.send("PONG");
@@ -78,7 +78,7 @@ function pingPongTest (port, host, on_complete) {
   client.addListener("close", function () {
     puts("client close");
     assert.equal(N+1, count);
-    assertTrue(client_closed);
+    assert.equal(true, client_closed);
     if (on_complete) on_complete();
     tests_run += 1;
   });

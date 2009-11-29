@@ -5,7 +5,7 @@ setTimeout(function () {
 }, 50);
 
 process.addListener("exit", function () {
-  assertTrue("A" in a);
+  assert.equal(true, "A" in a);
   assert.equal("A", a.A());
   assert.equal("D", a.D());
 });

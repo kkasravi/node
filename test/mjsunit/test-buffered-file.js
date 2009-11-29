@@ -33,6 +33,6 @@ setTimeout(function () {
 }, 10);
 
 process.addListener("exit", function () {
-  assertTrue(fileUnlinked);
+  assert.equal(true, fileUnlinked);
   puts("done");
 });

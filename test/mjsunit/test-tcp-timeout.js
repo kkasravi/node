@@ -69,12 +69,12 @@ client.addListener("close", function (had_error) {
 });
 
 process.addListener("exit", function () {
-  assertTrue(starttime != null);
-  assertTrue(timeouttime != null);
+  assert.equal(true, starttime != null);
+  assert.equal(true, timeouttime != null);
 
   diff = timeouttime - starttime;
   puts("diff = " + diff);
-  assertTrue(timeout < diff);
+  assert.equal(true, timeout < diff);
   // Allow for 800 milliseconds more
-  assertTrue(diff < timeout + 800);
+  assert.equal(true, diff < timeout + 800);
 });

@@ -68,10 +68,10 @@ process.addListener("exit", function () {
   assert.equal(2, requests_sent);
 
   var hello = new RegExp("/hello");
-  assertTrue(hello.exec(server_response) != null);
+  assert.equal(true, hello.exec(server_response) != null);
 
   var quit = new RegExp("/quit");
-  assertTrue(quit.exec(server_response) != null);
+  assert.equal(true, quit.exec(server_response) != null);
 
-  assertTrue(client_got_eof);
+  assert.equal(true, client_got_eof);
 });

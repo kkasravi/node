@@ -11,5 +11,5 @@ cat.addListener("exit", function (status) { exit_status = status; });
 cat.kill();
 
 process.addListener("exit", function () {
-  assertTrue(exit_status > 0);
+  assert.equal(true, exit_status > 0);
 });

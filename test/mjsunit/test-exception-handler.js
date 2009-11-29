@@ -21,5 +21,5 @@ setTimeout(function() {
 
 process.addListener("exit", function () {
   puts("exit");
-  assertTrue(caughtException);
+  assert.equal(true, caughtException);
 });

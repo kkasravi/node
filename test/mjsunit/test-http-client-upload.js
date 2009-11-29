@@ -46,6 +46,6 @@ req.finish(function(res) {
 
 process.addListener("exit", function () {
   assert.equal("1\n2\n3\n", sent_body);
-  assertTrue(server_req_complete);
-  assertTrue(client_res_complete);
+  assert.equal(true, server_req_complete);
+  assert.equal(true, client_res_complete);
 });

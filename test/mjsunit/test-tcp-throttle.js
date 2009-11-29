@@ -32,7 +32,7 @@ client.addListener("receive", function (d) {
 setTimeout(function () {
   chars_recved = recv.length;
   puts("pause at: " + chars_recved);
-  assertTrue(chars_recved > 1);
+  assert.equal(true, chars_recved > 1);
   client.readPause();
   setTimeout(function () {
     puts("resume at: " + chars_recved);

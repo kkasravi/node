@@ -52,5 +52,5 @@ client.addListener("eof", function () {
 
 process.addListener("exit", function () {
   assert.equal(N, chars_recved);
-  assertTrue(npauses > 2);
+  assert.equal(true, npauses > 2);
 });

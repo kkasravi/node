@@ -25,7 +25,7 @@ posix.stat(__filename).addCallback(function (s) {
   assert.equal(false, s.isDirectory());
 
   puts("isFile: " + JSON.stringify( s.isFile() ) );
-  assertTrue(s.isFile());
+  assert.equal(true, s.isFile());
 
   puts("isSocket: " + JSON.stringify( s.isSocket() ) );
   assert.equal(false, s.isSocket());
@@ -49,6 +49,6 @@ posix.stat(__filename).addCallback(function (s) {
 process.addListener("exit", function () {
   assert.equal(2, success_count);
   assert.equal(false, got_error);
-  assertTrue(stats.mtime instanceof Date);
+  assert.equal(true, stats.mtime instanceof Date);
 });
 

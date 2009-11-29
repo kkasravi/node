@@ -10,8 +10,8 @@ function tlsTest (port, host, caPem, keyPem, certPem) {
   var sent_final_ping = false;
 
   var server = tcp.createServer(function (socket) {
-    assertTrue(socket.remoteAddress !== null);
-    assertTrue(socket.remoteAddress !== undefined);
+    assert.equal(true, socket.remoteAddress !== null);
+    assert.equal(true, socket.remoteAddress !== undefined);
     if (host === "127.0.0.1")
       assert.equal(socket.remoteAddress, "127.0.0.1");
     else if (host == null)
@@ -29,7 +29,7 @@ function tlsTest (port, host, caPem, keyPem, certPem) {
                            + "OU=Test TLS Certificate,CN=localhost");
       puts("server got: " + JSON.stringify(data));
       assert.equal("open", socket.readyState);
-      assertTrue(count <= N);
+      assert.equal(true, count <= N);
       if (/PING/.exec(data)) {
         socket.send("PONG");
       }
@@ -89,7 +89,7 @@ function tlsTest (port, host, caPem, keyPem, certPem) {
 
   client.addListener("close", function () {
     assert.equal(N+1, count);
-    assertTrue(sent_final_ping);
+    assert.equal(true, sent_final_ping);
     tests_run += 1;
   });
 }

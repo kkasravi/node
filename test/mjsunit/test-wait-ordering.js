@@ -15,7 +15,7 @@ function test_timeout_order(delay, desired_order) {
   timer(0).addCallback(function() {
     timer(delay).wait()
     var b = new Date();
-    assertTrue(b - a >= delay);
+    assert.equal(true, b - a >= delay);
     order++;
     // A stronger assertion would be that the ordering is correct.
     // With Poor Man's coroutines we cannot guarentee that.

@@ -31,6 +31,6 @@ http.cat("http://localhost:12312/", "utf8").addErrback(function () {
 
 process.addListener("exit", function () {
   puts("exit");
-  assertTrue(got_good_server_content);
-  assertTrue(bad_server_got_error);
+  assert.equal(true, got_good_server_content);
+  assert.equal(true, bad_server_got_error);
 });

@@ -48,14 +48,14 @@ p5.addCallback(function () {
 p2.emitSuccess();
 
 assert.equal(false, p1_done);
-assertTrue(p2_done);
+assert.equal(true, p2_done);
 assert.equal(false, p3_done);
 
 var ret1 = p1.wait()
 assert.equal("single arg", ret1);
 
-assertTrue(p1_done);
-assertTrue(p2_done);
+assert.equal(true, p1_done);
+assert.equal(true, p2_done);
 assert.equal(false, p3_done);
 
 p3.emitSuccess();
@@ -66,17 +66,17 @@ assert.equal(false, p5_done);
 p5.emitSuccess();
 
 assert.equal(false, p4_done);
-assertTrue(p5_done);
+assert.equal(true, p5_done);
 
 var ret4 = p4.wait();
 assertArrayEquals(["a","b","c"], ret4);
 
-assertTrue(p4_done);
+assert.equal(true, p4_done);
 
 process.addListener("exit", function () {
-  assertTrue(p1_done);
-  assertTrue(p2_done);
-  assertTrue(p3_done);
-  assertTrue(p4_done);
-  assertTrue(p5_done);
+  assert.equal(true, p1_done);
+  assert.equal(true, p2_done);
+  assert.equal(true, p3_done);
+  assert.equal(true, p4_done);
+  assert.equal(true, p5_done);
 });
