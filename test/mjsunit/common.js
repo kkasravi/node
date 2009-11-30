@@ -10,7 +10,7 @@ var mjsunit = require("mjsunit");
 var assert = require('assert');
 var sys = require("sys");
 
-process.mixin(exports, mjsunit, sys, {assert: assert});
+process.mixin(exports, mjsunit, sys);
+exports.assert = require('assert');
 exports.posix = require("posix");
 exports.path = path;
-
