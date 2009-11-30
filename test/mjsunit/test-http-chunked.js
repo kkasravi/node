@@ -17,6 +17,6 @@ http.cat("http://localhost:"+PORT+"/", "utf8")
     server.close();
   })
   .addErrback(function() {
-    assertUnreachable('http.cat should succeed in < 1000ms');
+    assert.ok(false, 'http.cat should succeed in < 1000ms');
   })
   .timeout(1000);

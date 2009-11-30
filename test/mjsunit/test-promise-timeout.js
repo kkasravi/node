@@ -7,7 +7,7 @@ promise.timeout(250);
 assert.equal(250, promise.timeout());
 
 promise.addCallback(function() {
-  assertUnreachable('addCallback should not fire after a promise error');
+  assert.ok(false, 'addCallback should not fire after a promise error');
 });
 
 promise.addErrback(function(e) {
@@ -36,7 +36,7 @@ setTimeout(function() {
 }, 250);
 
 successPromise.addErrback(function() {
-  assertUnreachable('addErrback should not fire if there is no timeout');
+  assert.ok(false, 'addErrback should not fire if there is no timeout');
 });
 
 var errorPromise = new process.Promise();
@@ -61,11 +61,11 @@ setTimeout(function() {
 }, 400);
 
 cancelPromise.addCallback(function(e) {
-  assertUnreachable('addCallback should not fire if the promise is canceled');
+  assert.ok(false, 'addCallback should not fire if the promise is canceled');
 });
 
 cancelPromise.addErrback(function(e) {
-  assertUnreachable('addErrback should not fire if the promise is canceled');
+  assert.ok(false, 'addErrback should not fire if the promise is canceled');
 });
 
 var cancelTimeoutPromise = new process.Promise();
@@ -75,7 +75,7 @@ setTimeout(function() {
 }, 250);
 
 cancelPromise.addErrback(function(e) {
-  assertUnreachable('addErrback should not fire after a cancel event');
+  assert.ok(false, 'addErrback should not fire after a cancel event');
 });
 
 process.addListener('exit', function() {
