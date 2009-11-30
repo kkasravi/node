@@ -7,5 +7,9 @@ assert.equal(12, process._byteLength("Il était tué", "ascii"));
 
 assert.equal(12, process._byteLength("Il était tué", "binary"));
 
-assertThrows('process._byteLength()');
-assertThrows('process._byteLength(5)');
+assert.throws(function() {
+  process._byteLength();
+});
+assert.throws(function() {
+ process._byteLength(5);
+});
