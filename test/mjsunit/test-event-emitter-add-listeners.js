@@ -22,7 +22,7 @@ puts("start");
 e.emit("hello", "a", "b");
 
 process.addListener("exit", function () {
-  assertArrayEquals(["hello"], events_new_listener_emited);
+  assert.deepEqual(["hello"], events_new_listener_emited);
   assert.equal(1, times_hello_emited);
 });
 

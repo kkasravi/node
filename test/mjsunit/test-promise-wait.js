@@ -69,7 +69,7 @@ assert.equal(false, p4_done);
 assert.equal(true, p5_done);
 
 var ret4 = p4.wait();
-assertArrayEquals(["a","b","c"], ret4);
+assert.deepEqual(["a","b","c"], ret4);
 
 assert.equal(true, p4_done);
 
