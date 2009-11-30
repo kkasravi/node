@@ -12,41 +12,41 @@ var d4 = require("../mjsunit/fixtures/b/d");
 
 assert.equal(false, false, "testing the test program.");
 
-assertInstanceof(a.A, Function);
+assert.equal(true, a.A instanceof Function);
 assert.equal("A", a.A());
 
-assertInstanceof(a.C, Function);
+assert.equal(true, a.C instanceof Function);
 assert.equal("C", a.C());
 
-assertInstanceof(a.D, Function);
+assert.equal(true, a.D instanceof Function);
 assert.equal("D", a.D());
 
-assertInstanceof(d.D, Function);
+assert.equal(true, d.D instanceof Function);
 assert.equal("D", d.D());
 
-assertInstanceof(d2.D, Function);
+assert.equal(true, d2.D instanceof Function);
 assert.equal("D", d2.D());
 
-assertInstanceof(d3.D, Function);
+assert.equal(true, d3.D instanceof Function);
 assert.equal("D", d3.D());
 
-assertInstanceof(d4.D, Function);
+assert.equal(true, d4.D instanceof Function);
 assert.equal("D", d4.D());
 
 process.addListener("exit", function () {
-  assertInstanceof(a.A, Function);
+  assert.equal(true, a.A instanceof Function);
   assert.equal("A done", a.A());
 
-  assertInstanceof(a.C, Function);
+  assert.equal(true, a.C instanceof Function);
   assert.equal("C done", a.C());
 
-  assertInstanceof(a.D, Function);
+  assert.equal(true, a.D instanceof Function);
   assert.equal("D done", a.D());
 
-  assertInstanceof(d.D, Function);
+  assert.equal(true, d.D instanceof Function);
   assert.equal("D done", d.D());
 
-  assertInstanceof(d2.D, Function);
+  assert.equal(true, d2.D instanceof Function);
   assert.equal("D done", d2.D());
 
   puts("exit");

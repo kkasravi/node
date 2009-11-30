@@ -11,7 +11,7 @@ var changes = 0;
 process.watchFile(f, function (curr, prev) {
   puts(f + " change");
   changes++;
-  assertTrue(curr.mtime != prev.mtime);
+  assert.equal(true, curr.mtime != prev.mtime);
   process.unwatchFile(f);
 });
 

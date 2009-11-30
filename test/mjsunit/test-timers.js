@@ -5,7 +5,7 @@ var WINDOW = 200; // why is does this need to be so big?
 var interval_count = 0;
 var setTimeout_called = false;
 
-assertInstanceof(setTimeout, Function);
+assert.equal(true, setTimeout instanceof Function);
 var starttime = new Date;
 
 setTimeout(function () {

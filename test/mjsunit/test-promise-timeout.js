@@ -11,7 +11,7 @@ promise.addCallback(function() {
 });
 
 promise.addErrback(function(e) {
-  assertInstanceof(e, Error);
+  assert.equal(true, e instanceof Error);
   assert.equal('timeout', e.message);
   timeouts++;
 });
@@ -24,7 +24,7 @@ var waitPromise = new process.Promise();
 try {
   waitPromise.timeout(250).wait()
 } catch (e) {
-  assertInstanceof(e, Error);
+  assert.equal(true, e instanceof Error);
   assert.equal('timeout', e.message);
   timeouts++;
 }
@@ -46,7 +46,7 @@ setTimeout(function() {
 }, 250);
 
 errorPromise.addErrback(function(e) {
-  assertInstanceof(e, Error);
+  assert.equal(true, e instanceof Error);
   assert.equal('intentional', e.message);
 });
 
